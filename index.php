@@ -158,12 +158,13 @@
 
 	</style>
 
-  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script>
 
 		function showSuggestions(inputText){
 			if( (inputText.value != "fil") && (inputText.value != "file") && (inputText.value != "files") ){
-		        $("#prog").css("width","0%" );
+				//because for some reason these input to php will match all files
+				$("#prog").css("width","0%" );
 				str = inputText.value;
 				$.ajax({
 					url: "file_list.php?input="+str,
@@ -171,17 +172,17 @@
 						onprogress: function (e) {
 							if (e.lengthComputable) {
 								console.log(e.loaded / e.total * 100 + '%');		
-						        $("#prog").css("width",(e.loaded / e.total *100)+"%" );
+						        	$("#prog").css("width",(e.loaded / e.total *100)+"%" );
 							}
 						}
 					},
 					success: function (response) {
-				        $("#prog").css("width",(1*100)+"%" );
-				        $("#suggestions").html(response);
+						$("#prog").css("width",(1*100)+"%" );
+						$("#suggestions").html(response);
 					}
 				});	
 			}else{
-		        $("#suggestions").html(" ");
+			        $("#suggestions").html(" ");
 			}
 		}
 
