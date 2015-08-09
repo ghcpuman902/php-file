@@ -169,7 +169,7 @@
 
 	</style>
 
-    <script src='../js/jquery-2.1.1.js'></script>
+  	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$("#file-select").change(function(){
