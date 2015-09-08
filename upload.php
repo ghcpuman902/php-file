@@ -41,7 +41,7 @@
 			border: dashed 2px #000;
 			border-bottom: none 0px;
 			color: #000;
-			border-radius: 20px 20px 0px 0px;
+			border-radius: 10px 10px 0px 0px;
 			padding: 20px;
     		transition: all 200ms;
 		}
@@ -79,7 +79,7 @@
 			border: none;
 			outline: none;
 		    cursor: pointer;
-			border-radius: 0px 0px 20px 20px;
+			border-radius: 0px 0px 10px 10px;
     		transition: all 200ms;
 		}
 		#upload-button:hover{
@@ -96,19 +96,25 @@
 
     	#back{
     		font-size: 1em;
-    		text-decoration: underline;
-    		color: #278BD2;
 			margin: 0.6em 0;
     	}
-    	#back:hover{
+
+    	a{
+    		text-decoration: underline;
+    		color: #278BD2;
+    	}
+    	a:hover{
     		color: #4B99D1;
     	}
-    	#back:active{
+    	a:active{
     		color: #1C689E;
     	}
 
     	#upload-history{
 			margin: 0.6em 0;
+			width: 100%;
+			overflow: scroll;
+
     	}
 
 		@media only screen and (min-width: 320px) {
@@ -169,7 +175,7 @@
 
 	</style>
 
-  	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src='../js/jquery-2.1.1.js'></script>
 	<script>
 		$(document).ready(function(){
 			$("#file-select").change(function(){
@@ -247,6 +253,6 @@
 			</div>
 
 		</div>
-		
+
 </body>
 </html>
