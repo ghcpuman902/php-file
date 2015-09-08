@@ -35,10 +35,14 @@
 	        border: 1px solid #f0f0f0;
 	        border-bottom: 2px solid #000;
     		transition: all 200ms;
+			-webkit-appearance: none;
+			border-radius: 0;
 		}
 		.inputText:focus{
 	        border: 1px solid #d0d0d0;
 	        border-bottom: 2px solid #278BD2;
+			-webkit-appearance: none;
+			border-radius: 0;
 		}
 
 		#suggestions{
@@ -50,6 +54,7 @@
 			border-radius: 10px;
     		transition: all 200ms;
 			margin-bottom: 1.8em;
+			overflow: scroll;
 		}
 
     	#prog{
@@ -158,13 +163,13 @@
 
 	</style>
 
-  	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src='../js/jquery-2.1.1.js'></script>
 	<script>
 
 		function showSuggestions(inputText){
-			if( (inputText.value != "fil") && (inputText.value != "file") && (inputText.value != "files") ){
-				//because for some reason these input to php will match all files
-				$("#prog").css("width","0%" );
+			if( (inputText.value != ".") && (inputText.value != "..") && (inputText.value.length > 2) ){
+
+		        $("#prog").css("width","0%" );
 				str = inputText.value;
 				$.ajax({
 					url: "file_list.php?input="+str,
@@ -172,17 +177,17 @@
 						onprogress: function (e) {
 							if (e.lengthComputable) {
 								console.log(e.loaded / e.total * 100 + '%');		
-						        	$("#prog").css("width",(e.loaded / e.total *100)+"%" );
+						        $("#prog").css("width",(e.loaded / e.total *100)+"%" );
 							}
 						}
 					},
 					success: function (response) {
-						$("#prog").css("width",(1*100)+"%" );
-						$("#suggestions").html(response);
+				        $("#prog").css("width",(1*100)+"%" );
+				        $("#suggestions").html(response);
 					}
 				});	
 			}else{
-			        $("#suggestions").html(" ");
+		        $("#suggestions").html(" ");
 			}
 		}
 
